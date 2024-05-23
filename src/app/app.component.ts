@@ -22,12 +22,14 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.searchAll();
   }
+
   async searchAll() {
     this.isLoading = true;
     await this.searchUser();
     await this.getUserRepos();
     this.isLoading = false;
   }
+
   async searchUser() {
     return new Promise<void>((resolve, reject) => {
       this.apiService.getUser(this.username).subscribe(
@@ -49,6 +51,7 @@ export class AppComponent implements OnInit {
       );
     });
   }
+
   async getUserRepos() {
     return new Promise<void>((resolve, reject) => {
       if (this.username) {
@@ -71,33 +74,40 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
   onUsernameChange(event: any) {
     this.username = event.target.value;
     console.log(this.repositories);
     console.log(this.user);
   }
+
   onPageChange(page: number) {
     this.page = page;
     this.searchAll();
   }
+
   getPages(): number[] {
     const pageCount = Math.ceil(this.user.public_repos / this.perPage);
     return Array.from({ length: pageCount }, (_, index) => index + 1);
   }
+
   pageIncrement() {
-    if (this.page <(this.user.public_repos / this.perPage)) {
-      this.page = this.page + 1;
+    const maxPage = Math.ceil(this.user.public_repos / this.perPage);
+    if (this.page < maxPage) {
+      this.page += 1;
       this.searchAll();
     }
   }
+
   pageDecrement() {
-    if (this.page != 1) {
-      this.page = this.page - 1;
+    if (this.page > 1) {
+      this.page -= 1;
       this.searchAll();
     }
   }
-  setPerPage(value:number){
-    this.perPage = value
-    this.searchAll()
+
+  setPerPage(event: any) {
+    this.perPage = event.target.value;
+    this.searchAll();
   }
 }

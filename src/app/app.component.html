@@ -3,7 +3,7 @@
     <div></div>
     <form (ngSubmit)="searchAll()">
       <input
-        [(ngModel)]="username"
+        (ngModel)="username"
         (input)="onUsernameChange($event)"
         placeholder="Enter GitHub username"
       />
@@ -11,10 +11,8 @@
     </form>
     <div>
       <select
-        name="perPage"
-        [(ngModel)]="perPage"
-        (input)="setPerPage(perPage)"
-        value="{{ perPage }}"
+        (ngModel)="perPage"
+        (input)="setPerPage($event)"
       >
         <option disabled>Selete Page Size</option>
         <option *ngFor="let number of pageSizeOptions">
