@@ -308,6 +308,10 @@ $secondary: #ccc;
   .container{
     padding: 10px 0;
     overflow-y: hidden;
+    .search-bar {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
   .git-container {
     border: none;
@@ -324,19 +328,17 @@ $secondary: #ccc;
         margin-left: 10px;
         width: 100vw;
         .profile-image {
-          width: 100px;
-          height: 100px;
-          // border-radius: 50%;
+          min-width: 120px;
         }
         h2{
           font-size: 18px;
         }
+        .link{
+          margin-left: 100%;
+        }
       }
       .right {
         margin-top: 10px;
-        h2 {
-          font-size: 100px;
-        }
         p {
           margin: 5px 0;
         }
