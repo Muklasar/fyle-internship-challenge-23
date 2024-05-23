@@ -1,5 +1,100 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
+<div class="container">
+  <div class="search-bar">
+    <div></div>
+    <form (ngSubmit)="searchAll()">
+      <input
+        [(ngModel)]="username"
+        (input)="onUsernameChange($event)"
+        placeholder="Enter GitHub username"
+      />
+      <button type="submit">Search</button>
+    </form>
+    <div>
+      <select
+        name="perPage"
+        [(ngModel)]="perPage"
+        (input)="setPerPage(perPage)"
+        value="{{ perPage }}"
+      >
+        <option disabled>Selete Page Size</option>
+        <option *ngFor="let number of pageSizeOptions">
+          {{ number }}
+        </option>
+        <!-- <option value="repositories">Repositories</option> -->
+      </select>
+    </div>
+  </div>
+  <div *ngIf="isLoading" class="loading-indicator">
+    <img src="../assets/image/loader.gif" alt="" srcset="" />
+  </div>
+  <div *ngIf="!isLoading" class="complete-loading">
+    <div class="git-container" *ngIf="user.name; else notFound">
+      <div class="profile">
+        <div class="left">
+          <img
+            class="profile-image"
+            src="{{ user.avatar_url }}"
+            alt="profile image"
+          />
+
+          <a class="link" href="{{ user.html_url }}" target="_black">
+            <img src="../assets/image/link.jpg" alt="" />
+            <span>{{ user.html_url }}</span>
+          </a>
+        </div>
+        <div class="right">
+          <h2>{{ user.name }}</h2>
+          <p>{{ user.bio }}</p>
+          <p class="link">
+            <img src="../assets/image/location.jpg" alt="" />
+            <span>{{ user.location }}</span>
+          </p>
+          <p>
+            Twitter:
+            {{
+              user.twitter_username !== null
+                ? "http://twitter.com/" + user.twitter_username
+                : "undefined"
+            }}
+          </p>
+        </div>
+      </div>
+      <div class="repos">
+        <div class="repo" *ngFor="let repo of repositories">
+          <h2>{{ repo.name }}</h2>
+          <p>{{ repo.description }}</p>
+          <div class="tags">
+            <a class="tag"> Javscript </a>
+            <a class="tag"> Angular </a>
+            <a class="tag"> HTML </a>
+            <a class="tag"> CSS </a>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <button (click)="pageDecrement()">{{ "<<" }}</button>
+        <button
+          *ngFor="let cpage of getPages()"
+          (click)="onPageChange(cpage)"
+          [class.active]="cpage === page"
+        >
+          {{ cpage }}
+        </button>
+        <button (click)="pageIncrement()">{{ ">>" }}</button>
+      </div>
+      <div class="footer">
+        <button class="older" (click)="pageDecrement()">
+          <img src="../assets/image/arrow.jpg" alt="" srcset="" />
+          <span>Older</span>
+        </button>
+        <button class="newer" (click)="pageIncrement()">
+          <span>Newer</span>
+          <img src="../assets/image/arrow.jpg" alt="" srcset="" />
+        </button>
+      </div>
+    </div>
+    <ng-template #notFound>
+      <p>Invalid Username</p>
+    </ng-template>
   </div>
 </div>

@@ -1,0 +1,399 @@
+/* styles.scss */
+$primary: rgb(30, 136, 190);
+$secondary: #ccc;
+
+.container {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .complete-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+
+      &:focus {
+        border-color: $primary;
+      }
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 1px solid $primary;
+      border-radius: 0 4px 4px 0;
+      background-color: $primary;
+      color: white;
+      cursor: pointer;
+      outline: none;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+    select{
+      width: 200px;
+      height: 100%;
+      border: 1px solid $primary;
+      border-radius: 5px;
+    }
+  }
+
+  .error-message {
+    color: red;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .repositories {
+    list-style-type: none;
+    padding: 0;
+
+    .repository {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 100%;
+      max-width: 600px;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+
+      .repository-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .repository-description {
+        font-size: 16px;
+        color: #666;
+      }
+
+      .repository-topics {
+        margin-top: 10px;
+
+        .topic {
+          display: inline-block;
+          padding: 5px 10px;
+          margin: 5px 5px 0 0;
+          background-color: #f1f1f1;
+          border-radius: 3px;
+          font-size: 14px;
+          color: #333;
+
+          &:hover {
+            background-color: #e1e1e1;
+          }
+        }
+      }
+    }
+  }
+  .git-container {
+    border: 1px solid black;
+    padding: 15px 20px 25px;
+    width: 80%;
+    height: 100%;
+    border-radius: 5px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .profile {
+      display: flex;
+      gap: 20px;
+      align-self: flex-start;
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 20vw;
+
+        .profile-image {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+        }
+        .link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 20px;
+          img {
+            width: 20px;
+            height: 20px;
+            margin-top: 5px;
+          }
+        }
+      }
+      .right {
+        margin-top: 10px;
+        h2 {
+          font-size: 25px;
+          font-weight: 500;
+        }
+        p {
+          margin: 5px 0;
+        }
+        .link {
+          display: flex;
+          align-items: center;
+          margin-top: 5px;
+          img {
+            width: 20px;
+            height: 20px;
+            // margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+  .repos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    gap: 30px;
+    .repo {
+      border: 1px solid black;
+      border-radius: 5px;
+      padding: 10px;
+      flex-basis: 48%;
+
+      h2 {
+        font-size: 30px;
+        color: $primary;
+      }
+    }
+    .tags {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      .tag {
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: $primary;
+        font-size: 10px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    }
+  }
+  .pagination {
+    margin-top: 30px;
+    // border: 1px solid $primary;
+    display: inline-block;
+    border-radius: 2px;
+    button {
+      padding: 8px 12px;
+      border: 1px solid $primary;
+      color: $primary;
+      font-weight: 500;
+      cursor: pointer;
+      &:hover {
+        background-color: $primary;
+        color: white;
+      }
+      &.active {
+        background-color: $primary;
+        color: white;
+        border-color: $primary;
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    gap: 150px;
+    margin-top: 20px;
+    button {
+      display: flex;
+      align-items: center;
+      justify-self: center;
+      border: 2px solid $secondary;
+      padding: 10px 25px;
+      text-align: center;
+      border-radius: 30px;
+      color: $primary;
+      font-weight: 500;
+      &:hover {
+        background: $primary;
+        color: white;
+      }
+    }
+    img {
+      width: 25px;
+      color: $primary;
+      height: 20px;
+    }
+    span {
+      padding: 0 5px;
+    }
+    .older {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .loading-indicator {
+    img {
+      width: 80vw;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@media (max-width: 1054px) {
+  .git-container {
+    width: 100%;
+    padding: 5px;
+    .profile {
+      // flex-direction: column;
+      align-self: center;
+      .left {
+        margin-left: 10px;
+        width: 100vw;
+      }
+    }
+
+    .repos {
+      .repo {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1054px) {
+  .git-container {
+    width: 100%;
+    padding: 5px;
+    .profile {
+      // flex-direction: column;
+      align-self: center;
+      .left {
+        margin-left: 10px;
+        width: 100vw;
+      }
+      
+    }
+    .repos {
+      .repo {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container{
+    padding: 10px 0;
+    overflow-y: hidden;
+  }
+  .git-container {
+    border: none;
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+    .profile {
+      flex-direction: column;
+      width: 100vw;
+      .left {
+        margin-left: 10px;
+        width: 100vw;
+        .profile-image {
+          width: 100px;
+          height: 100px;
+          // border-radius: 50%;
+        }
+        h2{
+          font-size: 18px;
+        }
+      }
+      .right {
+        margin-top: 10px;
+        h2 {
+          font-size: 100px;
+        }
+        p {
+          margin: 5px 0;
+        }
+      }
+    }
+    .repos {
+      .repo {
+        flex-basis: 100%;
+        h2 {
+          font-size: 15px;
+          color: $primary;
+        }
+      }
+      .tags {
+        .tag {
+          font-size: 8px;
+        }
+      }
+    }
+  }
+  .pagination {
+    margin-top: 30px;
+    // border: 1px solid $primary;
+    display: inline-block;
+    border-radius: 2px;
+    button {
+      padding: 8px 12px;
+      border: 1px solid $primary;
+      color: $primary;
+      font-weight: 500;
+      cursor: pointer;
+      &:hover {
+        background-color: $primary;
+        color: white;
+      }
+      &.active {
+        background-color: $primary;
+        color: white;
+        border-color: $primary;
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    gap: 1px;
+    margin-top: 20px;
+    button {
+      border-radius: 30px;
+      font-size: 10px;
+    }
+    img {
+      width: 10px;
+      height: 10px;
+      color: $primary;
+    }
+    span {
+      padding: 0 5px;
+    }
+  }
+}
